@@ -1,7 +1,12 @@
-import React from 'react'
+import { Container, CssBaseline, Typography } from '@mui/material'
 
 const App = () => {
-  return <div>App-Hello-hello</div>
+  return (
+    <Container>
+      <CssBaseline />
+      <Typography>Hello Dev</Typography>
+    </Container>
+  )
 }
 
 export default App
