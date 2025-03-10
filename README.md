@@ -52,3 +52,9 @@ export default tseslint.config({
   },
 })
 ```
+
+## you can format your files using the Prettier CLI:
+1. npm run format
+2. npx prettier --write "src/**/*.{js,jsx,ts,tsx,css,html}"
+
+
