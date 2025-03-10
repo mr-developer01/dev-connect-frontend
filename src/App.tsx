@@ -1,12 +1,20 @@
-import { Container, CssBaseline, Typography } from '@mui/material'
+// _app.tsx
+import { useState } from 'react'
+import { ThemeProvider, CssBaseline } from '@mui/material'
+import { getTheme } from './theme/appTheme' // Import custom theme
+import Demo from './components/Demo'
 
-const App = () => {
+export default function App() {
+  const [themeMode, setThemeMode] = useState<'light' | 'dark'>('light')
+
+  const toggleTheme = () => {
+    setThemeMode((prev) => (prev === 'light' ? 'dark' : 'light'))
+  }
+
   return (
-    <Container>
+    <ThemeProvider theme={getTheme(themeMode)}>
       <CssBaseline />
-      <Typography>Hello Dev</Typography>
-    </Container>
+      <Demo toggleTheme={toggleTheme} />
+    </ThemeProvider>
   )
 }
-
-export default App

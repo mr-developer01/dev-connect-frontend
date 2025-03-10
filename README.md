@@ -54,7 +54,8 @@ export default tseslint.config({
 ```
 
 ## you can format your files using the Prettier CLI:
+
 1. npm run format
-2. npx prettier --write "src/**/*.{js,jsx,ts,tsx,css,html}"
-
-
+2. npx prettier --write "src/\*_/_.{js,jsx,ts,tsx,css,html}"
+3. https://dev-connect-service.onrender.com/api-docs/
+4. https://dev-connect-service.onrender.com/
