@@ -1,18 +1,22 @@
 // components/Home.tsx
 import { Typography, Button, Container, Box, useTheme } from '@mui/material'
+import { useThemeMode } from '../hooks/useThemeMode'
 
-interface HomeProps {
-  toggleTheme: () => void
-}
-
-export default function Demo({ toggleTheme }: HomeProps) {
+export default function Demo() {
+  const { setThemeMode } = useThemeMode()
   const theme = useTheme() // Access the theme
 
   return (
     <Container>
       {/* Theme Toggle Button */}
       <Box textAlign="center" my={3}>
-        <Button variant="contained" color="primary" onClick={toggleTheme}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() =>
+            setThemeMode((prev) => (prev === 'light' ? 'dark' : 'light'))
+          }
+        >
           Toggle Theme (Light / Dark)
         </Button>
       </Box>

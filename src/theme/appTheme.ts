@@ -19,12 +19,13 @@ export const getTheme = (mode: 'light' | 'dark') =>
       mode,
       primary: {
         main: mode === 'light' ? '#1976d2' : '#90caf9',
+        secondary: mode === 'light' ? '#fff' : '#fd7a9f',
       },
       secondary: {
         main: mode === 'light' ? '#ff4081' : '#f48fb1',
       },
       background: {
-        default: mode === 'light' ? '#f5f5f5' : '#121212',
+        default: mode === 'light' ? '#ff928a' : '#121212',
         paper: mode === 'light' ? '#fff' : '#1e1e1e',
       },
       text: {
@@ -48,9 +49,9 @@ export const getTheme = (mode: 'light' | 'dark') =>
         fontSize: '1.5rem',
         fontWeight: 700,
         '@media (min-width: 480px)': { fontSize: '1.75rem' },
-        '@media (min-width: 768px)': { fontSize: '2rem' },
-        '@media (min-width: 1024px)': { fontSize: '2.5rem' },
-        '@media (min-width: 1280px)': { fontSize: '3rem' },
+        '@media (min-width: 768px)': { fontSize: '1.5rem' },
+        '@media (min-width: 1024px)': { fontSize: '2rem' },
+        '@media (min-width: 1280px)': { fontSize: '2rem' },
         '@media (min-width: 1536px)': { fontSize: '3.5rem' }, // xxl
       },
     },
