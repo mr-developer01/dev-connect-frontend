@@ -1,9 +1,4 @@
-import {
-  Email,
-  VerifiedUserOutlined,
-  Visibility,
-  VisibilityOff,
-} from '@mui/icons-material'
+import { Email, Visibility, VisibilityOff } from '@mui/icons-material'
 import {
   Box,
   Button,
@@ -16,14 +11,13 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { Link, useNavigate } from 'react-router'
 
-const Register = () => {
+const Login = () => {
   const [cookies] = useCookies(['user'])
   const navigate = useNavigate()
-
   const [showPassword, setShowPassword] = useState(false)
   const handleClickShowPassword = () => setShowPassword((show) => !show)
 
@@ -39,7 +33,6 @@ const Register = () => {
     event.preventDefault()
   }
 
-  const userRef = useRef<HTMLInputElement | null>(null)
   const emailRef = useRef<HTMLInputElement | null>(null)
   const passwordRef = useRef<HTMLInputElement | null>(null)
 
@@ -60,7 +53,7 @@ const Register = () => {
       }}
     >
       <Typography variant="h1" color="primary.secondary">
-        Register You As Dev
+        Login As You Are A Dev
       </Typography>
       <Paper elevation={4} sx={{ width: 900, height: 450, display: 'flex' }}>
         <Box sx={{ width: '55%', bgcolor: 'secondary.main', height: '100%' }}>
@@ -81,19 +74,6 @@ const Register = () => {
           direction="column"
           sx={{ width: '65%', justifyContent: 'center', alignItems: 'center' }}
         >
-          <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
-            <InputLabel htmlFor="standard-adornment-user">User Name</InputLabel>
-            <Input
-              inputRef={userRef}
-              id="standard-adornment-user"
-              type="text"
-              endAdornment={
-                <InputAdornment position="end">
-                  <VerifiedUserOutlined />
-                </InputAdornment>
-              }
-            />
-          </FormControl>
           <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
             <InputLabel htmlFor="standard-adornment-email">Email</InputLabel>
             <Input
@@ -136,30 +116,30 @@ const Register = () => {
           <Button
             variant="outlined"
             onClick={async () => {
-              if (userRef.current && emailRef.current && passwordRef.current) {
+              if (emailRef.current && passwordRef.current) {
                 const jsonData = await fetch(
-                  'https://dev-connect-service.onrender.com/api/auth/register',
+                  'https://dev-connect-service.onrender.com/api/auth/login',
                   {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                      name: userRef.current?.value,
                       email: emailRef.current?.value,
                       password: passwordRef.current?.value,
                     }),
                   },
                 )
                 const response = await jsonData.json()
+                console.log(response)
                 navigate('/', { state: { token: response.token } })
               }
             }}
           >
-            Submit
+            Login
           </Button>
           <Typography>
-            Already Registerd As <Link to="/">Dev</Link>
+            Register as a <Link to="/register">New Dev</Link>
           </Typography>
         </Stack>
       </Paper>
@@ -167,4 +147,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Login
